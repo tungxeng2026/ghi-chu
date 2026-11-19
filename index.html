@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rent Manager Pro — Quản Lý Phòng Trọ Đa Nhiệm</title>
+    <meta
+      name="description"
+      content="Ứng dụng quản lý nhà trọ đa nhiệm: quản lý nhiều dãy trọ, phòng trọ, khách thuê, chốt điện nước và hóa đơn kèm mã QR gửi Zalo."
+    />
+    <style>
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --muted: #475569;
+        --subtle: #64748b;
+        --primary: #0d9488;
+        --primary-dark: #0f766e;
+        --primary-soft: #f0fdfa;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      .container {
+        max-width: 880px;
+        margin: 0 auto;
+        padding: 32px 20px 56px;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand-icon {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(13, 148, 136, 0.22);
+      }
+      .brand-title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin: 0;
+        color: var(--text);
+      }
+      .brand-sub {
+        font-size: 0.85rem;
+        color: var(--primary-dark);
+        font-weight: 600;
+        margin: 2px 0 0;
+      }
+      nav a {
+        color: var(--primary-dark);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-decoration: none;
+        padding: 10px 16px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        display: inline-block;
+      }
+      nav a:hover {
+        background: var(--primary-soft);
+        border-color: #99f6e4;
+      }
+      .hero {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        margin-bottom: 24px;
+      }
+      .hero h1 {
+        margin: 0 0 12px;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        line-height: 1.25;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 20px;
+      }
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+        color: var(--text);
+      }
+      .card p {
+        margin: 0;
+        font-size: 0.92rem;
+        color: var(--muted);
+      }
+      .data-box {
+        background: var(--primary-soft);
+        border: 1px solid #ccfbf1;
+        border-radius: 20px;
+        padding: 22px 24px;
+        margin-bottom: 28px;
+      }
+      .data-box h2 {
+        margin: 0 0 8px;
+        font-size: 1.05rem;
+        color: #115e59;
+      }
+      .data-box p {
+        margin: 0;
+        font-size: 0.93rem;
+        color: #134e4a;
+      }
+      footer {
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.86rem;
+        color: var(--subtle);
+      }
+      footer a {
+        color: var(--primary-dark);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#ffffff"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
+              <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
+              <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
+              <path d="M10 6h4" />
+              <path d="M10 10h4" />
+              <path d="M10 14h4" />
+              <path d="M10 18h4" />
+            </svg>
+          </div>
+          <div>
+            <p class="brand-title">Rent Manager Pro</p>
+            <p class="brand-sub">Quản Lý Phòng Trọ Đa Nhiệm · Phiên bản 1.0 / 2026</p>
+          </div>
+        </div>
+        <nav>
+          <a href="./privacy.html">Chính sách bảo mật (Privacy Policy)</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <h1>Giải pháp quản lý nhà trọ gọn nhẹ, minh bạch cho chủ trọ</h1>
+        <p>
+          <strong>Rent Manager Pro (Quản Lý Phòng Trọ Đa Nhiệm)</strong> hỗ trợ chủ nhà trọ tổ
+          chức nhiều dãy trọ, quản lý phòng &amp; khách thuê, chốt tiền phòng và chỉ số điện, nước,
+          rác, an ninh hằng tháng, đồng thời xuất ảnh phiếu thu kèm mã QR thanh toán gửi nhanh qua
+          Zalo.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Quản lý dãy trọ &amp; phòng linh hoạt</h2>
+          <p>
+            Hỗ trợ nhiều khu trọ, tùy chỉnh tầng từ tầng Trệt, thiết lập giá thuê mặc định từng
+            phòng và theo dõi hợp đồng, người ở chi tiết.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Chốt hóa đơn &amp; Mã QR nhanh chóng</h2>
+          <p>
+            Tính cước tự động theo đồng hồ công tơ, theo đầu người hoặc khoán phòng; theo dõi công
+            nợ và thu chi lợi nhuận từng tháng.
+          </p>
+        </article>
+        <article class="card">
+          <h2>Kiến trúc lưu trữ độc lập theo chủ trọ</h2>
+          <p>
+            Mỗi chủ trọ chủ động kết nối với cơ sở dữ liệu Firebase riêng dưới tài khoản Google của
+            mình, bảo đảm dữ liệu riêng tư và an toàn.
+          </p>
+        </article>
+      </section>
+
+      <section class="data-box">
+        <h2>Quyền truy cập tài khoản Google (Google Sign-In)</h2>
+        <p>
+          Ứng dụng chỉ sử dụng thông tin đăng nhập Google cơ bản (địa chỉ Email, tên hiển thị và
+          ảnh đại diện) để xác thực danh tính chủ trọ và đồng bộ cấu hình kết nối Firebase riêng của
+          người dùng. Ứng dụng không đọc Gmail, không truy cập Google Drive cá nhân và không chia
+          sẻ dữ liệu với bên thứ ba. Xem chi tiết tại
+          <a href="./privacy.html" style="color: #0f766e; font-weight: 700">
+            Chính sách bảo mật / Privacy Policy
+          </a>.
+        </p>
+      </section>
+
+      <footer>
+        <div>
+          Phát triển bởi <strong>Kỹ Sư Vui Tính</strong> · Liên hệ hỗ trợ:{' '}
+          <a href="mailto:thamtudaitai2010@gmail.com">thamtudaitai2010@gmail.com</a>
+        </div>
+        <div>
+          <a href="./privacy.html">Chính sách bảo mật (Privacy Policy)</a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
