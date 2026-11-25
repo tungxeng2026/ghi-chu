@@ -3,9 +3,21 @@ const path = require('path');
 const Tiktok = require('@tobyg74/tiktok-api-dl');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
+
+// Cho phép App APK và Google AI Studio gọi API từ domain khác (CORS)
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // Phục vụ các file tĩnh (HTML, CSS, JS) trong thư mục public
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -58,7 +70,7 @@ app.post('/api/info', async (req, res) => {
   });
 });
 
-// Endpoint trung gian ép trình duyệt tải thẳng file về máy
+// Endpoint trung gian ép trình duyệt/app tải thẳng file về máy
 app.get('/api/download', async (req, res) => {
   const { fileUrl, type } = req.query;
   if (!fileUrl) return res.status(400).send('Thiếu fileUrl');
